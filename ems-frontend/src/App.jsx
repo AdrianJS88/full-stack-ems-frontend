@@ -3,13 +3,35 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import ListEmployeeComponent from './components/ListEmployeeComponent'
+import HeaderComponent from './components/HeaderComponent'
+import FooterComponent from './components/FooterComponent'
+import{BrowserRouter ,Routes,Route} from 'react-router-dom'
+import EmployeeComponent from './components/EmployeeComponent'
+import ListDepartmentComponent from './components/ListDepartmentComponent'
 
 function App() {
   
 
   return (
     <>
-     <ListEmployeeComponent/>
+     <BrowserRouter>
+    <HeaderComponent/>
+    <Routes>
+    //http://localhost:3000
+    <Route path='/' element = { <ListEmployeeComponent />}></Route>
+    //http://localhost:3000/employees
+    <Route path='/employees' element = { <ListEmployeeComponent /> }></Route>
+      //http://localhost:3000/employees
+      <Route path='/add-employee' element = { <EmployeeComponent /> }></Route>
+    //http://localhost:3000/edit-employee/1
+    <Route path='/edit-employee/:id' element = { <EmployeeComponent /> }></Route>
+        
+         //http://localhost:3000/departments
+    <Route path='/departments' element = { <ListDepartmentComponent /> }></Route>
+    
+    </Routes>
+     <FooterComponent />
+     </BrowserRouter>
     </>
   )
 }
